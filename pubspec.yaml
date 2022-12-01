@@ -42,6 +42,7 @@ dependencies:
   flutter_sms: ^2.3.3
   permission_handler: ^10.2.0
   geolocator: ^9.0.2
+  record: ^4.4.3
 
 dev_dependencies:
   flutter_test:

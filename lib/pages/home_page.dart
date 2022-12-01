@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hifazat/components/hifazat_scaffold.dart';
+import 'package:hifazat/utils/recorder_utility.dart';
 import 'package:hifazat/utils/send_message_to_trusted_contacts.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +17,11 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       canListenToScream = !canListenToScream;
       if (canListenToScream) {
-        sendMessageToTrustedContacts();
+        // sendMessageToTrustedContacts();
+      //  start Scream Detect
+        startListening();
+      } else {
+        stopListening();
       }
     });
   }
