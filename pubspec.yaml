@@ -40,6 +40,8 @@ dependencies:
   fluttercontactpicker: ^4.7.0
   path_provider: ^2.0.11
   flutter_sms: ^2.3.3
+  permission_handler: ^10.2.0
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:
