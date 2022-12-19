@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hifazat/constants/colors.dart';
 import 'package:hifazat/constants/general.dart';
 import 'package:hifazat/pages/contacts_page.dart';
 import 'package:hifazat/pages/home_page.dart';
+import 'package:hifazat/utils/send_message_to_trusted_contacts.dart';
 
 class HifazatScaffold extends StatelessWidget {
   final Widget child;
@@ -54,6 +56,17 @@ class HifazatScaffold extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => const ContactsPage()));
+                  },
+                ),
+
+                GestureDetector(
+                  child: const Icon(
+                    Icons.message,
+                    color: kInactiveColor,
+                    size: 42,
+                  ),
+                  onTap: () {
+                    sendMessageToTrustedContacts();
                   },
                 ),
               ],

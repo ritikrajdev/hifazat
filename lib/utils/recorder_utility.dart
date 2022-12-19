@@ -6,7 +6,6 @@ import 'package:hifazat/utils/web_util.dart';
 import 'package:record/record.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:random_string/random_string.dart';
-import 'package:vibration/vibration.dart';
 
 Timer _timer = Timer(Duration.zero, () {});
 
@@ -19,7 +18,7 @@ void startListening() async {
 
     if (await record.hasPermission()) {
       print(DateTime.now().second);
-      await record.start(path: recordingPath, bitRate: 22050);
+      await record.start(path: recordingPath);
     }
 
     Timer(const Duration(seconds: 4), () async {
@@ -27,13 +26,9 @@ void startListening() async {
       await record.stop();
       bool ijScream = await isScream(recordingPath);
       File(recordingPath).delete();
+      print("Is Scream: ${ijScream}");
       if (ijScream) {
-        print("Is Scream: ${ijScream}");
         sendMessageToTrustedContacts();
-        var hasVibrator = await Vibration.hasVibrator();
-        if (hasVibrator ?? false) {
-          Vibration.vibrate(pattern: [500, 500, 500, 500]);
-        }
       }
     });
 

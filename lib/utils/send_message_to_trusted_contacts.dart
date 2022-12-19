@@ -1,11 +1,15 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sms/flutter_sms.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hifazat/globals.dart';
 import 'package:hifazat/utils/location.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:vibration/vibration.dart';
+
 
 void _sendSMS(String message, List<String> recipents) async {
   String _result = await sendSMS(
@@ -37,4 +41,13 @@ void sendMessageToTrustedContacts() async {
       _sendSMS(message, [phnNumber.number!]);
     }
   }
+
+  var hasVibrator = await Vibration.hasVibrator();
+  if (hasVibrator ?? false) {
+    Vibration.vibrate(pattern: [500, 500, 500, 500]);
+  }
+  Fluttertoast.showToast(
+      msg: "Sent SMS !",
+      toastLength: Toast.LENGTH_SHORT,
+  );
 }

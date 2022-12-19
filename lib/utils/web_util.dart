@@ -9,7 +9,7 @@ Future<bool> isScream(filePath) async {
 
   File file = File(filePath);
   print(file.lengthSync());
-  var uri = 'http://336a-34-70-173-120.ngrok.io';
+  var uri = 'http://15.207.114.117/';
   var request = MultipartRequest('POST', Uri.parse(uri));
   request.files.add(MultipartFile(
     'file',
@@ -20,6 +20,7 @@ Future<bool> isScream(filePath) async {
 
   var response = await request.send();
   final res = jsonDecode(await response.stream.bytesToString());
+  print(res);
 
   return res['scream'];
 }

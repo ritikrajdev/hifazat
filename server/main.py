@@ -12,7 +12,7 @@ from pydub import AudioSegment
 
 
 def convert_m4a_to_wav(m4a_file: str):
-    if m4a_file.endsWith('.m4a'):
+    if m4a_file.endswith('.m4a'):
         wav_file = m4a_file[:-4] + ".wav"
         track = AudioSegment.from_file(m4a_file,  format= 'm4a')
         file_handle = track.export(wav_filename, format='wav')
